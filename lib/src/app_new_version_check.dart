@@ -40,7 +40,7 @@ class AppVersion {
   Future<VersionStatus?> getVersionStatus(
       {required String? version, required String? packageName}) async {
     if (Platform.isIOS) {
-      return _getiOSStoreVersion(version, packageName);
+      return _getIOSStoreVersion(version, packageName);
     } else if (Platform.isAndroid) {
       return _getAndroidStoreVersion(version, packageName);
     } else {
@@ -82,10 +82,13 @@ class AppVersion {
           ?.text;
     } else {
       final scriptElements = document.getElementsByTagName('script');
-      var infoScriptElement = scriptElements
-          .firstWhere((elm) => elm.text.contains('key: \'ds:5\''));
-
-      if (infoScriptElement == null) return null;
+      var infoScriptElement;
+      try {
+         infoScriptElement = scriptElements
+            .firstWhere((elm) => elm.text.contains('key: \'ds:5\''));
+      } catch (exception) {
+        return null;
+      }
 
       final param = infoScriptElement.text
           .substring(20, infoScriptElement.text.length - 2)
@@ -111,7 +114,7 @@ class AppVersion {
     );
   }
 
-  Future<VersionStatus?> _getiOSStoreVersion(appVersion, packageName) async {
+  Future<VersionStatus?> _getIOSStoreVersion(appVersion, packageName) async {
     final id = iOSId ?? packageName;
     final parameters = {"bundleId": id};
     if (iOSAppStoreCountry != null) {
@@ -197,6 +200,7 @@ class AppVersion {
       context: context,
       barrierDismissible: allowDismissal,
       builder: (BuildContext context) {
+        // ignore: deprecated_member_use
         return WillPopScope(
             child: Platform.isAndroid
                 ? AlertDialog(
