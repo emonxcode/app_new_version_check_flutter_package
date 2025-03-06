@@ -1,6 +1,6 @@
 name: app_new_version_check
 description: A simple Flutter package to check new version available to the store, and show update popup. It simply use pubspec.yaml file to extract the current version of the app and maches wth the version availabe in the store.
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/ShahriarEmon3215/app_new_version_check_flutter_packaage.git
 
 environment:
