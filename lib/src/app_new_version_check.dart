@@ -84,7 +84,7 @@ class AppVersion {
       final scriptElements = document.getElementsByTagName('script');
       var infoScriptElement;
       try {
-         infoScriptElement = scriptElements
+        infoScriptElement = scriptElements
             .firstWhere((elm) => elm.text.contains('key: \'ds:5\''));
       } catch (exception) {
         return null;
