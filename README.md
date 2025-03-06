@@ -1,6 +1,6 @@
 # App New Version Check
 
-A flutter library to check app new version.
+A simple Flutter package to check new version available to store, and show update popup. It simply used pubspec.yaml file to extract the current version of the app and maches wth the version availabe in the store.
 
 ## How to use
 Add this package to pubspec.yaml and then import.
@@ -9,7 +9,7 @@ Add this package to pubspec.yaml and then import.
  import 'package:app_new_version_check/app_new_version_check.dart';
  ```
 
-Add "- pubspec.yaml" to assets in pubspec.yaml file
+Add "- pubspec.yaml" to the assets section in pubspec.yaml file
  ```dart
   assets:
     - pubspec.yaml
